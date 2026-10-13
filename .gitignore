@@ -2,3 +2,6 @@
 /docs
 /openspec
 /.cursor
+__pycache__/
+*.pyc
+.ruff_cache/
