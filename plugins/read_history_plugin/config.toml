@@ -1,0 +1,28 @@
+# read_history_plugin 随插件发布的默认配置，与 config.py 的模型默认值逐字段一致。
+# [plugin] config_version 是宿主要求的配置版本号（数字点分）：新增字段时提升它，
+# 宿主据此把新字段写回本文件；缺失会让宿主拒绝加载配置。
+
+[plugin]
+# 默认关闭：写入插件目录后不改动任何群的既有行为，填好白名单再打开。
+enabled = false
+config_version = "0.1.0"
+
+[access]
+# 可读群号名单：只装群号。写 QQ 号不报错但没有任何作用，既不改变私聊可读性
+# （私聊只由 private_enabled 决定），也不让私聊暴露工具。
+# 留空 = 没有任何可读的群，也没有任何群能看到本插件工具。
+readable_streams = []
+# 私聊历史总闸：打开时全部有历史记录的私聊都可读，与名单内容无关；私聊里永远不暴露工具。
+private_enabled = false
+
+[recent]
+# LLM 不传 limit 时的默认条数，以及任何调用都不得超过的上限。
+default_limit = 20
+max_limit = 50
+# 是否把机器人自己的发言计入结果。
+include_bot_messages = false
+
+[summary]
+# 中期摘要默认回溯的小时数，以及喂给 planner 的消息条数上限。
+window_hours = 6
+max_input_messages = 200
